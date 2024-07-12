@@ -1,0 +1,25 @@
+{
+  "name": "pedidosdeposito",
+  "version": "1.0.0",
+  "description": "Registro de pedidos del deposito",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Gregory Rodriguez",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.0",
+    "multer": "^1.4.5-lts.1",
+    "validator": "^13.12.0"
+  }
+}
