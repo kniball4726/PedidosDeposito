@@ -2,7 +2,9 @@ const crearPedido = (req,res)=>{
     res.send('Hola Mundo')
 }
 
-const verPedidos = () =>{}
+const verPedidos = (req,res) =>{
+    res.send('Hola Mundo')
+}
 
 const verPedido = () =>{}
 
