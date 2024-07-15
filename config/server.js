@@ -24,7 +24,15 @@ app.use('/contact', (req,res)=>{
 app.use('/pedidos', (req,res)=>{
     res.render('pages/pedidos')
 })
-
+app.use('/login', (req,res)=>{
+    res.render('pages/login')
+})
+app.use('/register', (req,res)=>{
+    res.render('pages/register')
+})
+app.use('/clientes',(req,res)=>{
+    res.render('pages/clientes')
+})
 app.use('*', (req,res)=>{
         res.render('pages/404')
 })
