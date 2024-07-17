@@ -43,11 +43,11 @@ const server = async()=>{
     try {
         await app.listen(PORT, ()=>{
             console.log();
-            console.log(`Servidor corriendo por  https://localhost:${PORT}`)
+            console.log(`Servidor corriendo por  https://localhost:${PORT}`.bold.bgGreen)
         })    
     } catch (error) {
         console.log();
-        console.log('Error al intentar correr servidor: '+error)
+        console.log(`Error al intentar correr servidor: ${error}`.bold.bgRed)
         
     }
     

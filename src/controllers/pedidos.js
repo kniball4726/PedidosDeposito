@@ -5,18 +5,30 @@ const Pedido = require('../models/Pedidos')
 module.exports = {
 
     crearPedido: (req,res)=>{
+        
         let parametros = req.body
 
         let pedido = new Pedido(parametros);
 
-        pedido.save()
+        let guardar = pedido.save()
+
+        if(error || !guardar){
+                res.status(500).send({message: 'Error al crear el pedido'})
+            }else{
+                res.status(200).send({message: 'Pedido creado correctamente'})
+            }   
     
     },
 
-    verPedidos: (req,res) =>{
-        let pedidos = Pedido.find();
-        return res.status(200).send(pedidos)
-},
+    verPedidos: async(req,res) =>{
+        
+        let consulta = await Pedido.find({})
+            if(!consulta){
+                    res.status(500).send({message: 'Error al consultar los pedidos'})
+                }else{
+                    res.status(200).send({message: 'Pedidos consultados correctamente', consulta})
+            }
+}, 
 
     verPedido: () =>{},
 
