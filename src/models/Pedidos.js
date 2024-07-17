@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 const PedidoSchema = new mongoose.Schema(
     {
         fecha: {
-            type: Date.now,
-            required: true,
+            type: Date,
+            default: Date.now
             },
         remito:{
             type: Number,
@@ -16,7 +16,7 @@ const PedidoSchema = new mongoose.Schema(
             required: true
         },
         direccion:{
-            type: String,
+            type: String
         },
         pedido:{
             type: Number,
@@ -31,11 +31,12 @@ const PedidoSchema = new mongoose.Schema(
             required: true
         },
         descuento:{
-            type: Date.now,
-            required: true
+            type: Date,
+            default: Date.now
         },
         entregado:{
             type: Date,
+            default: Date.now
         },
         nota:{
             type: String,
@@ -49,5 +50,5 @@ const PedidoSchema = new mongoose.Schema(
     }
     )
 
-module.exports = mongoose.model('pedidos', PedidoSchema);
+module.exports = mongoose.model('Pedido', PedidoSchema, 'pedidos');
         

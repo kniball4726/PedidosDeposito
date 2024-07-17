@@ -3,7 +3,7 @@ const router = express.Router();
 const controllers = require('../controllers/pedidos')
 
 
-router.get('/', controllers.verPedidos);
+router.get('/pedidos', controllers.verPedidos);
 router.get('/pedidos/:id', controllers.verPedido);
 router.post('/pedidos', controllers.crearPedido)
 router.put('/pedidos/:id', controllers.modificarPedido)
