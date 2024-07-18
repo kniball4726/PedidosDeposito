@@ -12,10 +12,13 @@ module.exports = {
 
         let guardar = pedido.save()
 
-        if(error || !guardar){
+        if(!guardar){
                 res.status(500).send({message: 'Error al crear el pedido'})
             }else{
-                res.status(200).send({message: 'Pedido creado correctamente'})
+                res.status(200).send({
+                    message: 'Pedido creado correctamente',
+                    pedido: pedido
+                })
             }   
     
     },
