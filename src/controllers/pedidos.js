@@ -25,8 +25,7 @@ module.exports = {
 
     verPedidos: async(req,res) =>{
         
-        let consulta = await Pedido.find({})
-                                   .sort({-1})
+        let consulta = await Pedido.find({})//.sort({-1})
             if(!consulta){
                     res.status(500).send({message: 'Error al consultar los pedidos'})
                 }else{
@@ -34,7 +33,17 @@ module.exports = {
             }
 }, 
 
-    verPedido: () =>{},
+    verPedido: (req,res) =>{
+        let id = req.params.id
+        Pedido.findById(id,(error, pedido)=>{
+            if(error || !consulta){
+                res.status(500).send({message: 'Error al consultar el pedido'})
+                }else{
+                    res.status(200).send({message: 'Pedido consultado correctamente', pedido})
+                    }
+                
+        })
+    },
 
     modificarPedido: () =>{},
 
