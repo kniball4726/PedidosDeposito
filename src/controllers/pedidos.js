@@ -26,6 +26,7 @@ module.exports = {
     verPedidos: async(req,res) =>{
         
         let consulta = await Pedido.find({})
+                                   .sort({-1})
             if(!consulta){
                     res.status(500).send({message: 'Error al consultar los pedidos'})
                 }else{
