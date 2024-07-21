@@ -1,6 +1,27 @@
-const { pedidosModels } = require('../models/');
 const validator = require('validator')
 const Pedido = require('../models/Pedidos')
+
+const validacion = (parametros)=>{
+
+        let validarRemito = !validator.isEmpty(parametros.remito) &&
+        validator.isNumeric(parametros.remito) &&
+        validator.isLength(parametros.remito, {min: 4, max: undefined})
+        
+        let validarCliente = !validator.isEmpty(parametros.cliente)
+        
+        let validarPedido = !validator.isEmpty(parametros.pedido) &&
+        validator.isNumeric(parametros.pedido)
+
+        let validarBultos = !validator.isEmpty(parametros.bultos) &&
+        validator.isNumeric(parametros.bultos)
+
+        let validarOperario = !validator.isEmpty(parametros.operario)
+
+        if(!validarRemito || !validarCliente || !validarPedido || !validarBultos || !validarOperario){
+            throw new Error('No se ha validado los tipos de datos, favor revisar')
+        }
+
+}
 
 module.exports = {
 
@@ -8,6 +29,15 @@ module.exports = {
         
         let parametros = req.body
 
+        try {
+            validacion(parametros)
+        } catch (error) {
+            return res.status(400).json({
+                status: 'error',
+                mensaje: 'Faltan datos por enviar'
+            })            
+        }
+        
         let pedido = new Pedido(parametros);
 
         let guardar = pedido.save()
@@ -60,10 +90,18 @@ module.exports = {
         
         let {remito} = req.params
         
-        let guardar = req.body
+        let parametros = req.body
 
+        try {
+            validacion(res, parametros)
+        } catch (error) {
+            return res.status(400).json({
+                status: 'error',
+                mensaje: 'Faltan datos por enviar'
+            })            
+        }
 
-        let pedido = await Pedido.findOneAndUpdate({remito}, guardar,{new: true})
+        let pedido = await Pedido.findOneAndUpdate({remito}, parametros,{new: true})
          
         if(!pedido){
                 return res.status(500).send({

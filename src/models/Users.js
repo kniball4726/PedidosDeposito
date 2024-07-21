@@ -16,13 +16,14 @@ const UsersSchema = new mongoose.Schema(
             unique: true
         },
         rol:{
-            type: ['usuario', 'admin'],
+            type: ['Usuario', 'Admin'],
             default: 'usuario'       
         }
         },
 
     {
-        timestamps: true
+        timestamps: true,
+        versionKey: false
     }
     )
 

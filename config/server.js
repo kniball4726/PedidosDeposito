@@ -10,7 +10,7 @@ app.use(express.static('public'));
 app.set('view engine','ejs')
 
 app.use('/api',require('../src/routes/pedidos'))
-//app.use('/api',require('../src/routes/users'))
+app.use('/api',require('../src/routes/users'))
 
 app.use('/home', (req,res)=>{
     res.render('pages/index')
