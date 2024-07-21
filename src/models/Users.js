@@ -8,13 +8,16 @@ const UsersSchema = new mongoose.Schema(
             unique: true
         },
         password:{
-            type: String,
-            unique: true        
+            type: String        
         },
         email:{
             type: String,
             required: true,
             unique: true
+        },
+        rol:{
+            type: ['usuario', 'admin'],
+            default: 'usuario'       
         }
         },
 

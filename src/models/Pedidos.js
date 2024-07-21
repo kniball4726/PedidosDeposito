@@ -35,8 +35,7 @@ const PedidoSchema = new mongoose.Schema(
             default: Date.now
         },
         entregado:{
-            type: Date,
-            default: Date.now
+            type: Date
         },
         nota:{
             type: String,
@@ -46,7 +45,8 @@ const PedidoSchema = new mongoose.Schema(
         }
     },
     {
-        timestamps: true
+        timestamps: true,
+        versionKey: false
     }
     )
 

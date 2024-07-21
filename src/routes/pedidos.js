@@ -3,10 +3,10 @@ const router = express.Router();
 const controllers = require('../controllers/pedidos')
 
 
-router.get('/pedidos', controllers.verPedidos);
-router.get('/pedidos/:id', controllers.verPedido);
-router.post('/pedidos', controllers.crearPedido)
-router.put('/pedidos/:id', controllers.modificarPedido)
-router.delete('/pedidos/:id', controllers.eliminarPedido)
+router.get('/pedidos/', controllers.readAll);
+router.get('/pedidos/:remito', controllers.readOne);
+router.post('/pedidos', controllers.createOne);
+router.put('/pedidos/:remito', controllers.updateOne);
+router.delete('/pedidos/:remito', controllers.deleteOne);
 
 module.exports = router;
